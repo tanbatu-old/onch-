@@ -24,14 +24,14 @@ let speed = 1000;
 let sec = 0
 let resn = 0
 $(function(){
-    // Shift-JISに変更する場合
+
     $.ajaxSetup({
         beforeSend: function(xhr){
             xhr.overrideMimeType("text/html;charset=Shift_JIS");
         }
     });
     $("#button").click(function() {
-		// 値を取得
+		
 		const str1 = $('#a').val();
         let str2 = str1.slice(0,65).replace('test/read.cgi/livejupiter','livejupiter/dat')
         str2 += '.dat'
