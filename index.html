@@ -2,9 +2,12 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>おーぷんタイムシフト(仮) β1.3</title>
     </head>
     <body>
-        <h4 id=snum>00</h4>
+        <h4 id=snum>ここに現在時刻が表示されます</h4>
+        <h1>おーぷんタイムシフト(仮) β1.3</h1>
         <form name="test">
             <input type="button" value="送信" id="button"><br>
             <input type="button" value="1x" onclick="speed=1000"><br>
@@ -12,7 +15,17 @@
             <textarea id="a" name="txt" rows="10" cols="40"></textarea>
         </form>
         <div id="msb"></div>
-        <div class=message></div>
+        <div class=message>
+            <div class=names>
+                <p class=rnum>10: </p>
+                <p class=name>名無しさん＠おーぷん </p>
+                <p class=date>20/10/11 10:34:32 </p>
+            </div>
+            <div class=msg>
+                <p>This is a message.</p>
+
+            </div>
+        </div>
     </body>
 
 </html>
@@ -41,9 +54,9 @@ $(function(){
             let be = data.split('\n')
             for(i=0;i<be.length-1;i++){
                 message = be[i].split('<>')
-                clock = message[2].slice(11,-7).split(":")
-                time=message[2].slice(17,-7) 
-                msg.push({msg:'<p style="background-color:gray;padding:5px;color:white">'+(i+1)+message[0]+'　　　'+message[2]+'<br>'+message[3]+'</p>',num:clock,sec:time})                
+                clock = message[2].slice(-15,-7).split(":")
+                time=message[2].slice(-9,-7) 
+                msg.push({date:message[2],name:message[0],num:clock,sec:time,msg:message[3]})                
             }
             hour = Number(msg[0].num[0])
             min = Number(msg[0].num[1])
@@ -54,15 +67,13 @@ $(function(){
 
 })
 function read(){
-    
-    sec++
     window.setTimeout(read,speed)
-    
+    sec++
     if(msg[resn].sec == ('00'+sec).slice(-2)){
-        write()
         resn++
+        write()
+        
     }
-    
     if(sec==60){
         sec=0
         min++
@@ -74,14 +85,25 @@ function read(){
             }
         }
     }
-    document.getElementById('snum').innerText = (hour.toString()).slice(-2)+":"+(min.toString()).slice(-2)+":"+("00"+(sec).toString()).slice(-2);
+    
+    document.getElementById('snum').innerText = ("00"+(hour).toString()).slice(-2)+":"+(min.toString()).slice(-2)+":"+("00"+(sec).toString()).slice(-2);
 }
 
 function write(){
-    document.getElementById('msb').insertAdjacentHTML('afterbegin',msg[resn].msg)
-    if(msg[resn+1].num == ('00'+sec).slice(-2)){
+    const ms = document.querySelector('.message').outerHTML
+    document.getElementById('msb').insertAdjacentHTML('afterbegin',ms)
+    document.querySelector('.rnum').innerText=resn
+    document.querySelector('.date').innerText=msg[resn-1].date
+    document.querySelector('.name').innerText=msg[resn-1].name
+    document.querySelector('.msg').innerHTML='<p>'+msg[resn-1].msg+'</p>'
+    if(msg[resn].sec == ('00'+sec).slice(-2)){
         resn++
+        console.log(resn)
+        console.log('aa')
         write();
+    }else{
+        console.log(msg[resn].num);
+        console.log(msg[resn-1].num)
     }
 }
 

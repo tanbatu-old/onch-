@@ -1,0 +1,28 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+.message{
+    width:100%;
+    margin:5px;
+    background-color:#e6e6e6
+}
+.names{
+    padding-top:6px;
+    padding-left:8px;
+    display:flex;   
+}
+.name{
+    color:#008000;
+    font-weight:bold;
+    padding-left:4px;
+}
+.date{
+    padding-left:4px;
+}
+.id{
+    padding-left:4px;
+}
+.msg{
+    padding-left:8px;
+}
