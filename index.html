@@ -4,6 +4,7 @@
         <meta charset="utf-8">
     </head>
     <body>
+        <h4 id=snum>00</h4>
         <form name="test">
             <input type="button" value="送信" id="button"><br>
             <input type="button" value="1x" onclick="speed=1000"><br>
@@ -11,6 +12,7 @@
             <textarea id="a" name="txt" rows="10" cols="40"></textarea>
         </form>
         <div id="msb"></div>
+        <div class=message></div>
     </body>
 
 </html>
@@ -21,7 +23,7 @@ let message
 let msg = []
 let time
 let speed = 1000;
-let sec = 0
+let sec = -1
 let resn = 0
 $(function(){
 
@@ -39,32 +41,40 @@ $(function(){
             let be = data.split('\n')
             for(i=0;i<be.length-1;i++){
                 message = be[i].split('<>')
-                time=message[2].slice(17,-7)
-                msg.push({msg:'<p style="background-color:gray;padding:5px;color:white">'+(i+1)+message[0]+'　　　'+message[2].slice(17,-6)+'<br>'+message[3]+'</p>',num:time})                
+                clock = message[2].slice(11,-7).split(":")
+                time=message[2].slice(17,-7) 
+                msg.push({msg:'<p style="background-color:gray;padding:5px;color:white">'+(i+1)+message[0]+'　　　'+message[2]+'<br>'+message[3]+'</p>',num:clock,sec:time})                
             }
-            console.log(msg)
+            hour = Number(msg[0].num[0])
+            min = Number(msg[0].num[1])
+            sec = Number(msg[0].num[2])-1
         });
         read()
 	});
 
 })
 function read(){
+    
+    sec++
     window.setTimeout(read,speed)
-    console.log('a')
-    if(msg[resn].num == ('00'+sec).slice(-2)){
+    
+    if(msg[resn].sec == ('00'+sec).slice(-2)){
         write()
         resn++
     }
-    sec++
-    
-    console.log("秒"+sec+",レス番"+resn+",レス番秒"+msg[resn].num)
-    
     
     if(sec==60){
-        sec=00
+        sec=0
+        min++
+        if(min==60){
+            min=0
+            hour++
+            if(hour==25){
+                hour=0
+            }
+        }
     }
-    
-    
+    document.getElementById('snum').innerText = (hour.toString()).slice(-2)+":"+(min.toString()).slice(-2)+":"+("00"+(sec).toString()).slice(-2);
 }
 
 function write(){
