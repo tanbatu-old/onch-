@@ -2,10 +2,62 @@
     padding:0px;
     margin:0px;
 }
+body{
+    background-color: #d3d3d3;
+}
+@media screen and (min-width:900px) { 
+    #msb{
+        width:900px;
+        
+    }  
+}
+@media screen and (max-width:900px) { 
+    #msb{
+        width:100%;
+        
+    }     
+}
+#snum{
+    text-align: center;
+    color:rgb(61, 61, 61)
+}
+#den {
+    background-color: #e6e6e6;
+}
+#msb{
+    margin:0 auto;
+    background-color:#e6e6e6;
+    height:100vh;
+}
+#console{
+    text-align: center;
+}
+#copy{
+    display:none;
+    
+}
+#mez{
+    display:block;
+
+}
+#a{
+    padding: 8px;
+    width: 70%;
+    height: 5%;
+    border-width: 0;
+    border-radius: 5px;
+}
+#button{
+    padding:1.5%;
+}
+.cbu{
+    padding:10px;
+}
 .message{
-    width:100%;
-    margin:5px;
-    background-color:#e6e6e6
+    width:95%;
+    margin:0 auto;
+    background-color:#e6e6e6;
+    border-top: 1px solid rgb(185, 185, 185);
 }
 .names{
     padding-top:6px;
@@ -24,5 +76,8 @@
     padding-left:4px;
 }
 .msg{
-    padding-left:8px;
+    padding:10px;
+}
+.msg p{
+    font-size:17px;
 }
