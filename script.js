@@ -17,23 +17,29 @@ $(function(){
         document.getElementById('button').remove();
         let str2 = str1.slice(0,65).replace('test/read.cgi/livejupiter','livejupiter/dat')
         str2 += '.dat'
-        $.get(str2, function(data){    
-            let be = data.split('\n')
-            for(i=0;i<be.length-1;i++){
-                message = be[i].split('<>')
-                clock = message[2].slice(-15,-7).split(":")
-                time=message[2].slice(-9,-7) 
-                msg.push({date:message[2],name:message[0],num:clock,sec:time,msg:message[3]})                
-            }
-            hour = Number(msg[0].num[0])
-            min = Number(msg[0].num[1])
-            sec = Number(msg[0].num[2])-1
-        });
-        read()
+        window.open(str2, '_blank')
+        document.querySelector('#a').insertAdjacentHTML('afterend','<textarea style="margin-top:5%;height:150px" placeholder="ここに選択したコードをコピー" id=b></textarea><br><input type="button" id=button1 value="開始" onclick="start()">')
+
         
-	});
+    });
 
 })
+function start(){
+    const data = $('#b').val();
+    document.getElementById('button1').remove();   
+    let be = data.split('\n')
+    for(i=0;i<be.length-1;i++){
+        message = be[i].split('<>')
+        clock = message[2].slice(-15,-7).split(":")
+        time=message[2].slice(-9,-7) 
+        msg.push({date:message[2],name:message[0],num:clock,sec:time,msg:message[3]}) 
+    }
+    hour = Number(msg[0].num[0])
+    min = Number(msg[0].num[1])
+    sec = Number(msg[0].num[2])-1
+    read()
+    document.querySelector('#form').remove()
+}
 function skip(){
     hour = msg[resn].num[0]
     min = msg[resn].num[1]
