@@ -17,9 +17,27 @@ body{
         
     }     
 }
+#form{
+    margin: 11px;
+    padding: 10px;
+    background-color: #d3d3d3;
+    border-radius: 10px;
+}
+@font-face{
+    font-family: 'imgur';
+      src: url(K\ Gothic.ttf);
+  }
+  @font-face{
+    font-family: 'icofont';
+      src: url(icofont.ttf);
+  }
 #snum{
     text-align: center;
     color:rgb(61, 61, 61)
+}
+h1{
+    font-family: imgur;
+    padding:3px;
 }
 #den {
     background-color: #e6e6e6;
@@ -53,6 +71,8 @@ body{
 }
 .cbu{
     padding:10px;
+    height:40px;
+    width:40px;
 }
 .message{
     width:95%;

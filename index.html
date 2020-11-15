@@ -4,20 +4,26 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=360,initial-scale=1">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <title>おーぷんタイムシフト(仮) β1.3</title>
+        <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+        <title>おーぷんタイムシフト(仮)</title>
     </head>
     <body>
+        
             <div id="msb">
-                <h1>おーぷんタイムシフト(仮) β1.3</h1>
+            <h1 style="text-align: center;background-color: darkgrey;color: white;">おーぷんタイムシフト(仮)</h1>
                 
                 <div id=form style="text-align: center;">
+                    
                     <input id="a" placeholder="URLを入力">
                     <input type="button" value="送信" id="button">
                 </div>
-                <div id=console>
-                    <input type="button" value=≪ class="cbu" onclick="skip()">
-                    <input type="button" value="||" class="cbu" onclick="skip()">
-                    <input type="button" value="≫" class="cbu" onclick="skip()">
+                <div id=cnsl style="position:relative;height:30px;padding:5px;display:none">
+                <div id=console style="display:none;position:absolute;left:50%;transform: translateX(-50%);">
+                    <p><i style="color:gray" class="fas fa-backward fa-2x" onclick="skip()"></i></p>
+                    <p><i style="padding-left: 10px;color:gray;" class="fas fa-pause fa-2x" onclick="stop();"></i></p>
+                    <p><i style="padding-left: 10px;color:gray;" class="fas fa-forward fa-2x" onclick="skip()"></i></p>
+                    
+                </div>
                 </div>
                 <h4 id=snum></h4>
                 <div id="den"><div>
@@ -35,10 +41,17 @@
 
             </div>
         </div>
-        <p>使い方</p>
-        <video src="https://i.imgur.com/HIZVv18.mp4" controls style="width:60%"></video>
-    </body>
+        <div id=setu style="text-align: center;">
+            <p>おーぷんタイムシフト(仮)は、おんJの実況を録画などでも楽しむ事が出来るツールです。</p>
 
+            <p>使い方</p>
+            <video src="https://i.imgur.com/HIZVv18.mp4" controls style="width:60%"></video>
+            <footer>
+                <p><a href="https://tanbatu.github.io">tanbatu</a> / <a href="https://open2ch.net">open2ch.net</a></p>
+            </footer>
+        </div>
+
+    </body>
 </html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
