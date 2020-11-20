@@ -13,16 +13,26 @@
             <h1 style="text-align: center;background-color: darkgrey;color: white;">おーぷんタイムシフト(仮)</h1>
                 
                 <div id=form style="text-align: center;">
-                    
+                    <div class="tabmenu">
+                        <label>
+                        <input name="tab" type="radio" checked>
+                        <em>2ch.sc</em>
+                        </label>
+                        <label>
+                        <input name="tab" type="radio">
+                        <em>open2ch</em>
+                        </label>
+                        </div>
                     <input id="a" placeholder="URLを入力">
-                    <input type="button" value="送信" id="button">
+                    <input type="button" value="送信" id="button"><br>
+                    <a id="cod" style="color: #3e3e3e;" href="javascript:cod()">datファイルのコードをそのまま貼る</a>
                 </div>
                 <div id=cnsl style="position:relative;height:30px;padding:5px;display:none">
                 <div id=console style="display:none;position:absolute;left:50%;transform: translateX(-50%);">
                     <p><i style="color:gray" class="fas fa-backward fa-2x" onclick="skip()"></i></p>
                     <p><i style="padding-left: 10px;color:gray;" class="fas fa-pause fa-2x" onclick="stop();"></i></p>
                     <p><i style="padding-left: 10px;color:gray;" class="fas fa-forward fa-2x" onclick="skip()"></i></p>
-                    
+                    <input type="number"></input>
                 </div>
                 </div>
                 <h4 id=snum></h4>
