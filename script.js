@@ -70,13 +70,15 @@ function start(){
     }else{
         itti = msg[0].date.slice(-3)    
     }
-    hour = Number(msg[0].num[0])
-    min = Number(msg[0].num[1])
-    sec = Number(msg[0].num[2])-1
+    hour = msg[0].num[0]
+    min = msg[0].num[1]
+    sec = msg[0].num[2]
+    mse = msg[0].m -1 
     read()
     document.querySelector('#form').remove()
     document.querySelector('#setu').remove()
     document.getElementById('cnsl').style.display = "block";
+    document.querySelector('.radio_ex').style.display = "block";
     document.getElementById('console').style.display = "flex";
 }
 function skip(){
@@ -131,21 +133,19 @@ function write(){
     document.querySelector('.message').id = resn
     document.querySelector('.rnum').innerText=resn
     document.querySelector('.date').innerText=msg[resn-1].date
+    if(Site_Check == false){
+        if(msg[resn-1].date.slice(-3) == itti){
+        document.querySelector('.date').insertAdjacentHTML('afterbegin','<span style="color:red">主</span>')}
+    }
     if(msg[resn-1].date.slice(-16) == itti){
         document.querySelector('.date').insertAdjacentHTML('afterbegin','<span style="color:red">主</span>')
     }
     document.querySelector('.name').innerText=msg[resn-1].name
     document.querySelector('.msg').innerHTML='<p>'+msg[resn-1].msg+'</p>'
     
-    if(msg[resn].num[2] == sec){
-        console.log('秒数一致')
-        console.log(msg[resn].mis)
-        console.log(ms)
-        if(msg[resn].m <= mse){
-            console.log('ミリ一致')
-            resn++           
-            write()
-        }
+    if(msg[resn].num[2] == sec && msg[resn].m <= mse){
+        resn++           
+        write()
     }
 }
 

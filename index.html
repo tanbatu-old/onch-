@@ -35,7 +35,18 @@
                 </div>
                 <input id=jumpid style="margin-top: 3px;height: 23px;width: 18%;margin-left: 2%;" placeholder="レス番移動" type="number"></input>
                 <input type="button" value="飛ぶ" style="height:23px;" onclick="jump()"></input>
+                <div class="radio_ex" style="display:none;display: block;right: 2.5%;position: absolute;top: 7.5px;">
+                    <input type="radio" name="s3" id="select_0" value="0.5倍" onclick="speed=200"/>
+                    <label for="select_0">0.5倍</label>
+                    <input type="radio" name="s3" id="select_1" value="1倍" onclick="speed=100;"/>
+                    <label for="select_1">1倍</label>
+                    <input type="radio" name="s3" id="select_2" value="2倍" onclick="speed=50;"/>
+                    <label for="select_2">2倍</label>
+                    <input type="radio" name="s3" id="select_3" value="4倍" onclick="speed=25;"/>
+                    <label for="select_3">4倍</label>
                 </div>
+                </div>
+
                 <h4 id=snum></h4>
                 <div id="den"><div>
             </div>
@@ -58,7 +69,7 @@
             <p>使い方</p>
             <video src="https://i.imgur.com/HIZVv18.mp4" controls style="width:60%"></video>
             <footer>
-                <p><a href="https://tanbatu.github.io">tanbatu</a> / <a href="https://open2ch.net">open2ch.net</a></p>
+                <p><a href="https://tanbatu.github.io">tanbatu</a></p>
             </footer>
         </div>
 
