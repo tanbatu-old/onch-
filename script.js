@@ -149,6 +149,12 @@ function write(){
     }
 }
 
+function jump(){
+    let jumpid = document.getElementById('jumpid').value
+    resn = jumpid-1
+    skip()
+}
+
 document.getElementById('button').onclick = function(){
     console.log()
 } 
